@@ -1,21 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package primegenerator;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  *
  * @author drewneely
  */
 public class PrimeGenerator {
-
+    
+    static File primesFile = new File("../primes");  
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws FileNotFoundException {
+        
+        
     }
+    
+    public static boolean isPrime(int n) throws FileNotFoundException {
+        Scanner scan = new Scanner(primesFile);
+        int sqrt = (int) Math.sqrt(n);
+        boolean isPrime = true;
+        boolean isComplete = false;
+        do {
+            int next = scan.nextInt();
+            if(n % next == 0) {
+                isPrime = false;
+                isComplete = true;
+            } else if(next > sqrt) {
+                isComplete = true;
+            }
+        } while (!isComplete);
+        return isPrime;
+    }
+    
+    
     
 }
